@@ -240,6 +240,37 @@
     }
     .tech-tag:hover { border-color: var(--yellow); color: var(--yellow); }
 
+    /* GALERIE PHOTOS */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .photo-slot {
+      aspect-ratio: 4/3;
+      background: var(--gray);
+      border: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65em;
+      letter-spacing: 1px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .photo-slot:hover { border-color: var(--yellow); }
+    .photo-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     /* LEARNINGS */
     .learnings { display: flex; flex-direction: column; gap: 12px; }
     .learning-item {
@@ -325,8 +356,8 @@
 
   <!-- NAV -->
   <nav>
-    <a href="portfolio.html" class="nav-logo">MR_PORTFOLIO</a>
-    <a href="portfolio.html" class="nav-back">← Retour au portfolio</a>
+    <a href="portfolio-mathys.html" class="nav-logo">MR_PORTFOLIO</a>
+    <a href="portfolio-mathys.html" class="nav-back">← Retour au portfolio</a>
   </nav>
 
   <!-- HERO -->
@@ -385,6 +416,22 @@
         </div>
       </div>
 
+      <div class="block">
+        <div class="block-label">Visuels du projet</div>
+        <h2 class="block-title">Photos</h2>
+        <div class="photo-grid">
+          <div class="photo-slot">
+            <img src="photo1.jpg" alt="Photo projet" onerror="this.style.display='none'; this.parentElement.innerHTML += '+ Ajouter photo'">
+          </div>
+          <div class="photo-slot">
+            <img src="photo2.jpg" alt="Photo projet" onerror="this.style.display='none'; this.parentElement.innerHTML += '+ Ajouter photo'">
+          </div>
+          <div class="photo-slot">
+            <img src="photo3.jpg" alt="Photo projet" onerror="this.style.display='none'; this.parentElement.innerHTML += '+ Ajouter photo'">
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="content-right">
@@ -426,7 +473,7 @@
   <!-- RETOUR BAS -->
   <div class="back-section">
     <p>Tu veux en savoir plus ? N'hésite pas à me contacter.</p>
-    <a href="portfolio.html" class="btn-back">← Retour au portfolio</a>
+    <a href="portfolio-mathys.html" class="btn-back">← Retour au portfolio</a>
   </div>
 
   <!-- FOOTER -->
