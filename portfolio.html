@@ -17,6 +17,23 @@
       --border: #222;
     }
 
+    .hero-blink {
+  position: absolute;
+  right: 60px;
+  bottom: 220px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75em;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: blink 1.2s step-end infinite;
+  }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
@@ -839,6 +856,7 @@ section.inactive {
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
+    <div class="hero-blink">// Disponible en alternance — Sept. 2026_</div>
     <div class="scroll-indicator">
       <span class="scroll-text">SCROLL</span>
       <div class="scroll-line"></div>
