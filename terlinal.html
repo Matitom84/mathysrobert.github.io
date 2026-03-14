@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mathys Robert – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 100%; height: 100%;
+  background: #000;
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+}
+#intro {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  z-index: 100;
+  transition: opacity .9s ease;
+}
+#intro.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+.lines-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: clamp(.9rem, 2.2vw, 1.05rem);
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: opacity .25s, transform .25s;
+}
+.line.visible { opacity: 1; transform: none; }
+.arrow { color: #FFD600; flex-shrink: 0; }
+.text  { color: #ffffff; }
+#enterBtn {
+  margin-top: 40px;
+  padding: 13px 36px;
+  background: transparent;
+  border: 1px solid #FFD600;
+  color: #FFD600;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .95rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 4px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .6s ease, transform .6s ease, color .25s, background .25s, box-shadow .25s;
+}
+#enterBtn.visible { opacity: 1; transform: none; }
+#enterBtn:hover {
+  background: #FFD600;
+  color: #000;
+  box-shadow: 0 0 28px rgba(255,214,0,.35);
+}
+#enterBtn::before { content: '> '; opacity:.6; }
+</style>
+</head>
+<body>
+<div id="intro">
+  <div class="lines-wrap" id="linesWrap"></div>
+  <button id="enterBtn" onclick="enterPortfolio()">Voir le portfolio</button>
+</div>
+
+<script>
+const LINES = [
+  { text: 'Étudiant en Cybersécurité – ESAIP', delay: 400  },
+  { text: 'Alternance · Septembre 2026',       delay: 1200, last: true },
+];
+const CHAR_SPEED = 38;
+const wrap = document.getElementById('linesWrap');
+const btn  = document.getElementById('enterBtn');
+
+function typeLine(span, txt, cb) {
+  let i = 0;
+  (function tick() {
+    if (i < txt.length) {
+      span.textContent += txt[i++];
+      setTimeout(tick, CHAR_SPEED + Math.random() * 18);
+    } else { cb && cb(); }
+  })();
+}
+
+function renderLine(cfg) {
+  const line = document.createElement('div');
+  line.className = 'line';
+  const arrow = document.createElement('span');
+  arrow.className = 'arrow';
+  arrow.textContent = '>';
+  const text = document.createElement('span');
+  text.className = 'text';
+  line.appendChild(arrow);
+  line.appendChild(text);
+  wrap.appendChild(line);
+  requestAnimationFrame(() => line.classList.add('visible'));
+  typeLine(text, cfg.text, cfg.last ? () => btn.classList.add('visible') : null);
+}
+
+LINES.forEach(cfg => setTimeout(() => renderLine(cfg), cfg.delay));
+
+function enterPortfolio() {
+  document.getElementById('intro').classList.add('fade-out');
+  setTimeout(() => window.location.href = 'index.html', 900);
+}
+</script>
+</body>
+</html>
