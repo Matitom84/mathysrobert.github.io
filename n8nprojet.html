@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projet — Devenir Pentester</title>
+  <title>Projet — IA WhatsApp n8n</title>
+  <link rel="icon" type="image/svg+xml" href="logo-mr.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -30,7 +31,6 @@
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--yellow); }
 
-    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -64,7 +64,6 @@
     }
     .nav-back:hover { color: var(--yellow); }
 
-    /* HERO */
     .project-hero {
       min-height: 55vh;
       display: flex;
@@ -120,7 +119,6 @@
       animation: fadeUp 0.8s ease 0.6s forwards;
     }
 
-    /* CHIFFRES CLÉS */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -151,7 +149,6 @@
       text-transform: uppercase;
     }
 
-    /* CONTENU PRINCIPAL */
     .main-content {
       display: grid;
       grid-template-columns: 1fr 340px;
@@ -161,11 +158,8 @@
       padding: 80px 60px;
       border-right: 1px solid var(--border);
     }
-    .content-right {
-      padding: 80px 40px;
-    }
+    .content-right { padding: 80px 40px; }
 
-    /* BLOCS */
     .block {
       margin-bottom: 60px;
       opacity: 0;
@@ -205,73 +199,6 @@
     .block-text p { margin-bottom: 14px; }
     .block-text strong { color: var(--yellow); font-weight: 700; }
 
-    /* SIDEBAR */
-    .sidebar-card {
-      background: var(--gray);
-      padding: 25px;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      opacity: 0;
-      transform: translateX(20px);
-      transition: all 0.7s ease;
-    }
-    .sidebar-card.visible { opacity: 1; transform: translateX(0); }
-    .sidebar-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65em;
-      color: var(--yellow);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tech-tag {
-      padding: 5px 12px;
-      border: 1px solid var(--border);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65em;
-      color: var(--muted);
-      letter-spacing: 1px;
-      transition: all 0.2s;
-    }
-    .tech-tag:hover { border-color: var(--yellow); color: var(--yellow); }
-
-    /* GALERIE PHOTOS */
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 20px;
-    }
-    .photo-slot {
-      aspect-ratio: 4/3;
-      background: var(--gray);
-      border: 1px dashed var(--border);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: var(--muted);
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65em;
-      letter-spacing: 1px;
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
-    .photo-slot:hover { border-color: var(--yellow); }
-    .photo-slot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* LEARNINGS */
     .learnings { display: flex; flex-direction: column; gap: 12px; }
     .learning-item {
       display: flex;
@@ -291,7 +218,63 @@
       flex-shrink: 0;
     }
 
-    /* RETOUR BAS */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .photo-slot {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .photo-slot:hover { border-color: var(--yellow); }
+    .photo-slot img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .photo-caption {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65em;
+      color: var(--muted);
+      padding: 10px 15px;
+      letter-spacing: 1px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sidebar-card {
+      background: var(--gray);
+      padding: 25px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      opacity: 0;
+      transform: translateX(20px);
+      transition: all 0.7s ease;
+    }
+    .sidebar-card.visible { opacity: 1; transform: translateX(0); }
+    .sidebar-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65em;
+      color: var(--yellow);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-tag {
+      padding: 5px 12px;
+      border: 1px solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65em;
+      color: var(--muted);
+      letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+    .tech-tag:hover { border-color: var(--yellow); color: var(--yellow); }
+
     .back-section {
       padding: 80px 60px;
       display: flex;
@@ -321,7 +304,6 @@
       box-shadow: 4px 4px 0 var(--yellow);
     }
 
-    /* FOOTER */
     footer {
       padding: 30px 60px;
       display: flex;
@@ -333,7 +315,6 @@
     }
     footer a { color: var(--yellow); text-decoration: none; }
 
-    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -354,42 +335,38 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="portfolio-mathys.html" class="nav-logo">MR_PORTFOLIO</a>
-    <a href="portfolio-mathys.html" class="nav-back">← Retour au portfolio</a>
+    <a href="portfolio.html" class="nav-logo">MR_PORTFOLIO</a>
+    <a href="portfolio.html" class="nav-back">← Retour au portfolio</a>
   </nav>
 
-  <!-- HERO -->
   <div class="project-hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
-    <div class="hero-tag">// 01 — Objectif professionnel</div>
-    <h1 class="hero-title">Devenir<br><span>Pentester</span></h1>
-    <p class="hero-desc">Mon objectif de carrière dans la cybersécurité offensive — comprendre les systèmes pour mieux les protéger.</p>
+    <div class="hero-tag">// 01 — Intelligence Artificielle & Automatisation</div>
+    <h1 class="hero-title">Agent IA<br><span>WhatsApp</span></h1>
+    <p class="hero-desc">Conception et déploiement d'un agent IA pour une PME — un système capable de répondre automatiquement aux clients sur WhatsApp, sans intervention humaine.</p>
   </div>
 
-  <!-- CHIFFRES CLÉS -->
   <div class="stats-bar">
     <div class="stat-item">
-      <div class="stat-num">3</div>
-      <div class="stat-label">Années de formation</div>
+      <div class="stat-num">2</div>
+      <div class="stat-label">Mois de développement</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">6+</div>
-      <div class="stat-label">Technologies apprises</div>
+      <div class="stat-num">1</div>
+      <div class="stat-label">PME cliente</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">2027</div>
-      <div class="stat-label">Objectif diplôme</div>
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Disponibilité de l'agent</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">100%</div>
-      <div class="stat-label">Motivation</div>
+      <div class="stat-label">Automatisé</div>
     </div>
   </div>
 
-  <!-- CONTENU -->
   <div class="main-content">
 
     <div class="content-left">
@@ -398,9 +375,21 @@
         <div class="block-label">Présentation</div>
         <h2 class="block-title">Le projet</h2>
         <div class="block-text">
-          <p>Passionné par la cybersécurité, j'ai décidé d'orienter ma carrière vers le <strong>pentest</strong> — ou test d'intrusion. L'objectif : penser comme un attaquant pour mieux défendre les systèmes.</p>
-          <p>Ce parcours m'a amené à intégrer le <strong>Bachelor Cybersécurité à l'ESAIP</strong>, une formation de 3 ans qui me donne les bases solides nécessaires pour évoluer dans ce domaine.</p>
-          <p>Je m'entraîne également sur des plateformes de <strong>CTF</strong> pour développer mes réflexes offensifs et défensifs en conditions réelles.</p>
+          <p>Une PME m'a confié la mission de créer un système capable de <strong>répondre automatiquement aux questions de ses clients via WhatsApp</strong>. L'objectif : libérer l'équipe des réponses répétitives et offrir une disponibilité 24h/24, 7j/7.</p>
+          <p>J'ai conçu et déployé un <strong>agent IA complet sur n8n</strong>, connecté à l'<strong>API Meta WhatsApp Business</strong>. Le système reçoit les messages des clients, les analyse, consulte une base de données Google Sheets contenant les informations de l'entreprise, puis génère une réponse personnalisée via <strong>OpenAI</strong> et la renvoie automatiquement.</p>
+          <p>Le projet m'a pris <strong>2 mois</strong> de développement, entre la configuration des APIs, la conception du workflow n8n, la gestion de la mémoire conversationnelle et les tests en conditions réelles.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-label">Comment ça fonctionne</div>
+        <h2 class="block-title">Architecture du système</h2>
+        <div class="learnings">
+          <div class="learning-item">Un client envoie un message WhatsApp → le <strong>WhatsApp Trigger</strong> reçoit le message en temps réel via l'API Meta</div>
+          <div class="learning-item">Un <strong>Switch</strong> analyse le type de message — entraînement ou question client — et route vers le bon agent</div>
+          <div class="learning-item">L'<strong>agent IA</strong> consulte Google Sheets pour récupérer les données de l'entreprise et génère une réponse contextuelle</div>
+          <div class="learning-item">La <strong>mémoire conversationnelle</strong> permet à l'agent de se souvenir des échanges précédents avec chaque client</div>
+          <div class="learning-item">La réponse est renvoyée automatiquement via <strong>WhatsApp Business Cloud</strong> en quelques secondes</div>
         </div>
       </div>
 
@@ -408,26 +397,22 @@
         <div class="block-label">Ce que j'ai appris</div>
         <h2 class="block-title">Compétences développées</h2>
         <div class="learnings">
-          <div class="learning-item">Analyse de vulnérabilités et compréhension des vecteurs d'attaque courants</div>
-          <div class="learning-item">Administration de systèmes Linux et Windows en environnement sécurisé</div>
-          <div class="learning-item">Bases de la cryptographie et des protocoles réseau (TCP/IP, HTTP, DNS)</div>
-          <div class="learning-item">Scripting Python pour automatiser des tâches de reconnaissance</div>
-          <div class="learning-item">Rigueur, persévérance et pensée analytique face aux problèmes complexes</div>
+          <div class="learning-item">Conception de workflows complexes sur <strong>n8n</strong> — gestion des nœuds, des conditions et des données</div>
+          <div class="learning-item">Intégration de l'<strong>API Meta WhatsApp Business</strong> — configuration, webhooks, envoi et réception de messages</div>
+          <div class="learning-item">Utilisation des <strong>modèles de langage OpenAI</strong> pour générer des réponses intelligentes et contextuelles</div>
+          <div class="learning-item">Gestion de la <strong>mémoire conversationnelle</strong> pour maintenir le contexte entre plusieurs échanges</div>
+          <div class="learning-item">Travail en conditions réelles pour un <strong>client professionnel</strong> — gestion des délais, des retours et des ajustements</div>
+          <div class="learning-item">Débogage et optimisation d'un système en production avec des <strong>contraintes techniques réelles</strong></div>
         </div>
       </div>
 
       <div class="block">
         <div class="block-label">Visuels du projet</div>
-        <h2 class="block-title">Photos</h2>
+        <h2 class="block-title">Workflow n8n</h2>
         <div class="photo-grid">
           <div class="photo-slot">
-            <img src="N8NPHOYO" alt="Workflow n8n">
-          </div>
-          <div class="photo-slot">
-            <img src="photo2.jpg" alt="Photo projet">
-          </div>
-          <div class="photo-slot">
-            <img src="photo3.jpg" alt="Photo projet">
+            <img src="workflow-n8n.png" alt="Workflow n8n complet">
+            <div class="photo-caption">// Architecture complète du workflow n8n</div>
           </div>
         </div>
       </div>
@@ -438,48 +423,51 @@
 
       <div class="sidebar-card">
         <div class="sidebar-label">Durée</div>
-        <div style="font-size:1.1em;font-weight:700;margin-bottom:6px;">2024 — 2027</div>
-        <div style="color:var(--muted);font-size:0.85em;">3 ans de formation intensive</div>
+        <div style="font-size:1.1em;font-weight:700;margin-bottom:6px;">2 mois</div>
+        <div style="color:var(--muted);font-size:0.85em;">Développement complet du système</div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-label">Client</div>
+        <div style="font-size:1em;font-weight:700;margin-bottom:6px;">PME</div>
+        <div style="color:var(--muted);font-size:0.85em;">Déploiement en conditions réelles</div>
       </div>
 
       <div class="sidebar-card">
         <div class="sidebar-label">Technologies utilisées</div>
         <div class="tech-list">
-          <span class="tech-tag">Python</span>
-          <span class="tech-tag">Linux</span>
-          <span class="tech-tag">Kali Linux</span>
-          <span class="tech-tag">Wireshark</span>
-          <span class="tech-tag">Nmap</span>
-          <span class="tech-tag">SQL</span>
-          <span class="tech-tag">Cisco</span>
-          <span class="tech-tag">C++</span>
+          <span class="tech-tag">n8n</span>
+          <span class="tech-tag">API Meta</span>
+          <span class="tech-tag">WhatsApp Business</span>
+          <span class="tech-tag">OpenAI</span>
+          <span class="tech-tag">Google Sheets</span>
+          <span class="tech-tag">Webhooks</span>
+          <span class="tech-tag">JavaScript</span>
+          <span class="tech-tag">API REST</span>
         </div>
       </div>
 
       <div class="sidebar-card">
         <div class="sidebar-label">Statut</div>
-        <div style="display:inline-block;padding:6px 16px;background:rgba(255,214,0,0.15);color:var(--yellow);border:1px solid rgba(255,214,0,0.3);font-family:'Space Mono',monospace;font-size:0.7em;letter-spacing:1px;font-weight:700;">⚡ En cours</div>
+        <div style="display:inline-block;padding:6px 16px;background:rgba(63,185,80,0.15);color:#3fb950;border:1px solid rgba(63,185,80,0.3);font-family:'Space Mono',monospace;font-size:0.7em;letter-spacing:1px;font-weight:700;">✓ Livré</div>
       </div>
 
       <div class="sidebar-card">
-        <div class="sidebar-label">École</div>
-        <div style="font-weight:700;margin-bottom:4px;">ESAIP</div>
-        <div style="color:var(--muted);font-size:0.85em;">Bachelor Cybersécurité — Bac +3</div>
+        <div class="sidebar-label">Type de projet</div>
+        <div style="font-size:0.9em;color:#aaa;line-height:1.7;">Automatisation IA pour client professionnel — réponse automatique aux messages WhatsApp</div>
       </div>
 
     </div>
   </div>
 
-  <!-- RETOUR BAS -->
   <div class="back-section">
-    <p>Tu veux en savoir plus ? N'hésite pas à me contacter.</p>
-    <a href="portfolio-mathys.html" class="btn-back">← Retour au portfolio</a>
+    <p>Intéressé par ce type de solution ? N'hésite pas à me contacter.</p>
+    <a href="portfolio.html" class="btn-back">← Retour au portfolio</a>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <span>© 2025 Mathys Robert</span>
-    <span>Projet — <a href="#">Devenir Pentester</a></span>
+    <span>Projet — <a href="#">Agent IA WhatsApp</a></span>
   </footer>
 
   <script>
