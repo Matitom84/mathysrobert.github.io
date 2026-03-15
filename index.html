@@ -94,7 +94,11 @@ html, body {
   opacity: 0;
   pointer-events: none;
 }
-
+@media (max-width: 768px) {
+  .morph-container { margin-bottom: 15px; }
+  .lines-wrap { gap: 8px; }
+  #enterBtn { margin-top: 25px; padding: 10px 26px; }
+}
 /* LINES */
 .lines-wrap {
   display: flex;
@@ -139,6 +143,7 @@ html, body {
   box-shadow: 0 0 28px rgba(0,212,255,.35);
 }
 #enterBtn::before { content: '> '; opacity:.6; }
+  
 </style>
 </head>
 <body>
@@ -178,11 +183,7 @@ html, body {
   
 
 <script>
-  @media (max-width: 768px) {
-  .morph-container { margin-bottom: 15px; }
-  .lines-wrap { gap: 8px; }
-  #enterBtn { margin-top: 25px; padding: 10px 26px; }
-}
+  
 const LINES = [
   { text: 'Bienvenue,', delay: 400 },
   { text: 'Je suis Mathys Robert.', delay: 1200 },
