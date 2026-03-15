@@ -52,21 +52,22 @@
 
     /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 60px;
-      border-bottom: 1px solid transparent;
-      transition: all 0.3s ease;
-    }
-    nav.scrolled {
-      background: rgba(10,10,10,0.95);
-      backdrop-filter: blur(20px);
-      border-bottom-color: var(--border);
-    }
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+nav.scrolled {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+}
     .nav-logo {
       font-family: 'Space Mono', monospace;
       font-size: 0.85em;
