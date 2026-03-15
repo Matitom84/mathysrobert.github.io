@@ -175,8 +175,14 @@ html, body {
   <button id="enterBtn" onclick="enterPortfolio()">Voir le portfolio</button>
 
 </div>
+  
 
 <script>
+  @media (max-width: 768px) {
+  .morph-container { margin-bottom: 15px; }
+  .lines-wrap { gap: 8px; }
+  #enterBtn { margin-top: 25px; padding: 10px 26px; }
+}
 const LINES = [
   { text: 'Bienvenue,', delay: 400 },
   { text: 'Je suis Mathys Robert.', delay: 1200 },
