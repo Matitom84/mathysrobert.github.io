@@ -9,12 +9,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --yellow: #FFD600;
-      --black: #0a0a0a;
-      --white: #f5f5f0;
-      --gray: #1a1a1a;
-      --muted: #666;
-      --border: #222;
+      --yellow: #00d4ff;
+      --black: #0d1b2a;
+      --white: #e8f4fd;
+      --gray: #112233;
+      --muted: #5a8aaa;
+      --border: #1a3a5c;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -31,6 +31,7 @@
     ::-webkit-scrollbar-track { background: var(--black); }
     ::-webkit-scrollbar-thumb { background: var(--yellow); }
 
+    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -39,7 +40,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 60px;
-      background: rgba(10,10,10,0.95);
+      background: rgba(13,27,42,0.95);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -64,8 +65,9 @@
     }
     .nav-back:hover { color: var(--yellow); }
 
+    /* HERO */
     .project-hero {
-      min-height: 55vh;
+      min-height: 60vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -77,14 +79,14 @@
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse at 10% 50%, rgba(255,214,0,0.07) 0%, transparent 50%),
-        radial-gradient(ellipse at 90% 20%, rgba(255,214,0,0.04) 0%, transparent 40%);
+        radial-gradient(ellipse at 10% 50%, rgba(0,212,255,0.07) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 20%, rgba(0,212,255,0.04) 0%, transparent 40%);
     }
     .hero-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(255,214,0,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,214,0,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
       background-size: 60px 60px;
     }
     .hero-tag {
@@ -103,12 +105,39 @@
       font-weight: 800;
       letter-spacing: -3px;
       line-height: 0.95;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       position: relative; z-index: 1;
       opacity: 0;
       animation: fadeUp 0.8s ease 0.4s forwards;
     }
     .hero-title span { color: var(--yellow); }
+
+    .hero-client {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      position: relative; z-index: 1;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.5s forwards;
+    }
+    .hero-client-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7em;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .hero-client-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75em;
+      color: var(--yellow);
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 4px 12px;
+      border: 1px solid var(--yellow);
+    }
+
     .hero-desc {
       max-width: 600px;
       color: var(--muted);
@@ -119,13 +148,14 @@
       animation: fadeUp 0.8s ease 0.6s forwards;
     }
 
+    /* STATS */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       border-bottom: 1px solid var(--border);
     }
     .stat-item {
-      padding: 50px 40px;
+      padding: 40px 40px;
       border-right: 1px solid var(--border);
       opacity: 0;
       transform: translateY(20px);
@@ -134,7 +164,7 @@
     .stat-item:last-child { border-right: none; }
     .stat-item.visible { opacity: 1; transform: translateY(0); }
     .stat-num {
-      font-size: clamp(2.5em, 4vw, 4em);
+      font-size: clamp(2em, 4vw, 3.5em);
       font-weight: 800;
       color: var(--yellow);
       letter-spacing: -2px;
@@ -143,15 +173,16 @@
     }
     .stat-label {
       font-family: 'Space Mono', monospace;
-      font-size: 0.7em;
+      font-size: 0.65em;
       color: var(--muted);
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
+    /* CONTENU */
     .main-content {
       display: grid;
-      grid-template-columns: 1fr 340px;
+      grid-template-columns: 1fr 320px;
       border-bottom: 1px solid var(--border);
     }
     .content-left {
@@ -159,6 +190,32 @@
       border-right: 1px solid var(--border);
     }
     .content-right { padding: 80px 40px; }
+
+    /* PHOTO HERO */
+    .photo-hero {
+      width: 100%;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    .photo-hero img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      filter: brightness(0.9) saturate(0.8) hue-rotate(180deg);
+      transition: filter 0.3s ease;
+    }
+    .photo-hero:hover img { filter: brightness(1) saturate(1) hue-rotate(180deg); }
+    .photo-hero-caption {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65em;
+      color: var(--muted);
+      padding: 10px 15px;
+      letter-spacing: 1px;
+      border-top: 1px solid var(--border);
+      background: var(--gray);
+    }
 
     .block {
       margin-bottom: 60px;
@@ -186,69 +243,66 @@
       background: var(--border);
     }
     .block-title {
-      font-size: 1.6em;
+      font-size: 1.5em;
       font-weight: 800;
       letter-spacing: -1px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
-    .block-text {
-      color: #aaa;
-      line-height: 1.9;
-      font-size: 0.95em;
-    }
+    .block-text { color: var(--muted); line-height: 1.9; font-size: 0.95em; }
     .block-text p { margin-bottom: 14px; }
     .block-text strong { color: var(--yellow); font-weight: 700; }
 
-    .learnings { display: flex; flex-direction: column; gap: 12px; }
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.5s ease;
+    }
+    .step.visible { opacity: 1; transform: translateX(0); }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7em;
+      color: var(--yellow);
+      min-width: 30px;
+      padding-top: 2px;
+    }
+    .step-text { font-size: 0.9em; color: var(--muted); line-height: 1.6; }
+    .step-text strong { color: var(--white); }
+
+    /* LEARNINGS */
+    .learnings { display: flex; flex-direction: column; gap: 10px; }
     .learning-item {
       display: flex;
       align-items: flex-start;
       gap: 12px;
-      padding: 15px;
+      padding: 14px 16px;
       background: var(--gray);
       border-left: 2px solid var(--yellow);
-      font-size: 0.9em;
-      color: #aaa;
+      font-size: 0.88em;
+      color: var(--muted);
       line-height: 1.6;
+      transition: background 0.2s;
     }
+    .learning-item:hover { background: #1a3350; }
     .learning-item::before {
       content: '→';
       color: var(--yellow);
       font-weight: 700;
       flex-shrink: 0;
     }
+    .learning-item strong { color: var(--white); }
 
-    .photo-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-top: 20px;
-    }
-    .photo-slot {
-      background: var(--gray);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
-    .photo-slot:hover { border-color: var(--yellow); }
-    .photo-slot img {
-      width: 100%;
-      display: block;
-      object-fit: cover;
-    }
-    .photo-caption {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.65em;
-      color: var(--muted);
-      padding: 10px 15px;
-      letter-spacing: 1px;
-      border-top: 1px solid var(--border);
-    }
-
+    /* SIDEBAR */
     .sidebar-card {
       background: var(--gray);
-      padding: 25px;
-      margin-bottom: 16px;
+      padding: 22px;
+      margin-bottom: 12px;
       border: 1px solid var(--border);
       opacity: 0;
       transform: translateX(20px);
@@ -257,26 +311,27 @@
     .sidebar-card.visible { opacity: 1; transform: translateX(0); }
     .sidebar-label {
       font-family: 'Space Mono', monospace;
-      font-size: 0.65em;
+      font-size: 0.6em;
       color: var(--yellow);
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
-    .tech-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-list { display: flex; flex-wrap: wrap; gap: 6px; }
     .tech-tag {
-      padding: 5px 12px;
+      padding: 4px 10px;
       border: 1px solid var(--border);
       font-family: 'Space Mono', monospace;
-      font-size: 0.65em;
+      font-size: 0.6em;
       color: var(--muted);
       letter-spacing: 1px;
       transition: all 0.2s;
     }
     .tech-tag:hover { border-color: var(--yellow); color: var(--yellow); }
 
+    /* RETOUR */
     .back-section {
-      padding: 80px 60px;
+      padding: 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -287,12 +342,12 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 16px 32px;
+      padding: 14px 28px;
       background: var(--yellow);
       color: var(--black);
       text-decoration: none;
       font-family: 'Space Mono', monospace;
-      font-size: 0.8em;
+      font-size: 0.75em;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -305,7 +360,7 @@
     }
 
     footer {
-      padding: 30px 60px;
+      padding: 25px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -324,12 +379,12 @@
       nav { padding: 20px 25px; }
       .project-hero { padding: 120px 25px 40px; }
       .stats-bar { grid-template-columns: 1fr 1fr; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 30px 25px; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding: 25px; }
       .main-content { grid-template-columns: 1fr; }
-      .content-left { padding: 50px 25px; border-right: none; }
-      .content-right { padding: 0 25px 50px; }
-      .back-section { flex-direction: column; gap: 20px; padding: 50px 25px; text-align: center; }
-      footer { flex-direction: column; gap: 10px; text-align: center; padding: 25px; }
+      .content-left { padding: 40px 25px; border-right: none; }
+      .content-right { padding: 0 25px 40px; }
+      .back-section { flex-direction: column; gap: 20px; padding: 40px 25px; text-align: center; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 20px 25px; }
     }
   </style>
 </head>
@@ -345,7 +400,11 @@
     <div class="hero-grid"></div>
     <div class="hero-tag">// 01 — Intelligence Artificielle & Automatisation</div>
     <h1 class="hero-title">Agent IA<br><span>WhatsApp</span></h1>
-    <p class="hero-desc">Conception et déploiement d'un agent IA pour une PME — un système capable de répondre automatiquement aux clients sur WhatsApp, sans intervention humaine.</p>
+    <div class="hero-client">
+      <span class="hero-client-label">Client</span>
+      <span class="hero-client-name">AWAKS</span>
+    </div>
+    <p class="hero-desc">Conception et déploiement d'un agent IA pour une PME via n8n et l'API Meta — un système capable de répondre automatiquement aux clients sur WhatsApp, sans intervention humaine.</p>
   </div>
 
   <div class="stats-bar">
@@ -359,7 +418,7 @@
     </div>
     <div class="stat-item">
       <div class="stat-num">24/7</div>
-      <div class="stat-label">Disponibilité de l'agent</div>
+      <div class="stat-label">Disponibilité agent</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">100%</div>
@@ -371,25 +430,46 @@
 
     <div class="content-left">
 
+      <!-- PHOTO EN HAUT -->
+      <div class="photo-hero block">
+        <img src="workflow-n8n.png" alt="Workflow n8n complet">
+        <div class="photo-hero-caption">// Architecture complète du workflow n8n — Awaks</div>
+      </div>
+
       <div class="block">
         <div class="block-label">Présentation</div>
         <h2 class="block-title">Le projet</h2>
         <div class="block-text">
-          <p>Une PME m'a confié la mission de créer un système capable de <strong>répondre automatiquement aux questions de ses clients via WhatsApp</strong>. L'objectif : libérer l'équipe des réponses répétitives et offrir une disponibilité 24h/24, 7j/7.</p>
-          <p>J'ai conçu et déployé un <strong>agent IA complet sur n8n</strong>, connecté à l'<strong>API Meta WhatsApp Business</strong>. Le système reçoit les messages des clients, les analyse, consulte une base de données Google Sheets contenant les informations de l'entreprise, puis génère une réponse personnalisée via <strong>OpenAI</strong> et la renvoie automatiquement.</p>
+          <p>Une PME — <strong>Awaks</strong> — m'a confié la mission de créer un système capable de <strong>répondre automatiquement aux questions de ses clients via WhatsApp</strong>. L'objectif : libérer l'équipe des réponses répétitives et offrir une disponibilité 24h/24, 7j/7.</p>
+          <p>J'ai conçu et déployé un <strong>agent IA complet sur n8n</strong>, connecté à l'<strong>API Meta WhatsApp Business</strong>. Le système reçoit les messages des clients, les analyse, consulte une base de données Google Sheets, puis génère une réponse personnalisée via <strong>OpenAI</strong> et la renvoie automatiquement.</p>
           <p>Le projet m'a pris <strong>2 mois</strong> de développement, entre la configuration des APIs, la conception du workflow n8n, la gestion de la mémoire conversationnelle et les tests en conditions réelles.</p>
         </div>
       </div>
 
       <div class="block">
-        <div class="block-label">Comment ça fonctionne</div>
-        <h2 class="block-title">Architecture du système</h2>
-        <div class="learnings">
-          <div class="learning-item">Un client envoie un message WhatsApp → le <strong>WhatsApp Trigger</strong> reçoit le message en temps réel via l'API Meta</div>
-          <div class="learning-item">Un <strong>Switch</strong> analyse le type de message — entraînement ou question client — et route vers le bon agent</div>
-          <div class="learning-item">L'<strong>agent IA</strong> consulte Google Sheets pour récupérer les données de l'entreprise et génère une réponse contextuelle</div>
-          <div class="learning-item">La <strong>mémoire conversationnelle</strong> permet à l'agent de se souvenir des échanges précédents avec chaque client</div>
-          <div class="learning-item">La réponse est renvoyée automatiquement via <strong>WhatsApp Business Cloud</strong> en quelques secondes</div>
+        <div class="block-label">Architecture</div>
+        <h2 class="block-title">Comment ça fonctionne</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step-num">01</span>
+            <div class="step-text">Un client envoie un message WhatsApp → le <strong>WhatsApp Trigger</strong> reçoit le message en temps réel via l'API Meta</div>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <div class="step-text">Un <strong>Switch</strong> analyse le type de message — entraînement ou question client — et route vers le bon agent</div>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <div class="step-text">L'<strong>agent IA</strong> consulte Google Sheets pour récupérer les données de l'entreprise et génère une réponse contextuelle</div>
+          </div>
+          <div class="step">
+            <span class="step-num">04</span>
+            <div class="step-text">La <strong>mémoire conversationnelle</strong> permet à l'agent de se souvenir des échanges précédents avec chaque client</div>
+          </div>
+          <div class="step">
+            <span class="step-num">05</span>
+            <div class="step-text">La réponse est renvoyée automatiquement via <strong>WhatsApp Business Cloud</strong> en quelques secondes</div>
+          </div>
         </div>
       </div>
 
@@ -406,39 +486,28 @@
         </div>
       </div>
 
-      <div class="block">
-        <div class="block-label">Visuels du projet</div>
-        <h2 class="block-title">Workflow n8n</h2>
-        <div class="photo-grid">
-          <div class="photo-slot">
-            <img src="N8NPHOYO" alt="Workflow n8n complet">
-            <div class="photo-caption">// Architecture complète du workflow n8n</div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <div class="content-right">
 
       <div class="sidebar-card">
+        <div class="sidebar-label">Client</div>
+        <div style="font-size:1.1em;font-weight:700;margin-bottom:4px;color:var(--yellow);">Awaks</div>
+        <div style="color:var(--muted);font-size:0.85em;">PME — Déploiement en conditions réelles</div>
+      </div>
+
+      <div class="sidebar-card">
         <div class="sidebar-label">Durée</div>
-        <div style="font-size:1.1em;font-weight:700;margin-bottom:6px;">2 mois</div>
+        <div style="font-size:1.1em;font-weight:700;margin-bottom:4px;">2 mois</div>
         <div style="color:var(--muted);font-size:0.85em;">Développement complet du système</div>
       </div>
 
       <div class="sidebar-card">
-        <div class="sidebar-label">Client</div>
-        <div style="font-size:1em;font-weight:700;margin-bottom:6px;">PME</div>
-        <div style="color:var(--muted);font-size:0.85em;">Déploiement en conditions réelles</div>
-      </div>
-
-      <div class="sidebar-card">
-        <div class="sidebar-label">Technologies utilisées</div>
+        <div class="sidebar-label">Technologies</div>
         <div class="tech-list">
           <span class="tech-tag">n8n</span>
           <span class="tech-tag">API Meta</span>
-          <span class="tech-tag">WhatsApp Business</span>
+          <span class="tech-tag">WhatsApp</span>
           <span class="tech-tag">OpenAI</span>
           <span class="tech-tag">Google Sheets</span>
           <span class="tech-tag">Webhooks</span>
@@ -449,12 +518,12 @@
 
       <div class="sidebar-card">
         <div class="sidebar-label">Statut</div>
-        <div style="display:inline-block;padding:6px 16px;background:rgba(63,185,80,0.15);color:#3fb950;border:1px solid rgba(63,185,80,0.3);font-family:'Space Mono',monospace;font-size:0.7em;letter-spacing:1px;font-weight:700;">✓ Livré</div>
+        <div style="display:inline-block;padding:6px 14px;background:rgba(63,185,80,0.15);color:#3fb950;border:1px solid rgba(63,185,80,0.3);font-family:'Space Mono',monospace;font-size:0.65em;letter-spacing:1px;font-weight:700;">✓ Livré</div>
       </div>
 
       <div class="sidebar-card">
-        <div class="sidebar-label">Type de projet</div>
-        <div style="font-size:0.9em;color:#aaa;line-height:1.7;">Automatisation IA pour client professionnel — réponse automatique aux messages WhatsApp</div>
+        <div class="sidebar-label">Type</div>
+        <div style="font-size:0.85em;color:var(--muted);line-height:1.7;">Automatisation IA — réponse automatique aux messages WhatsApp clients</div>
       </div>
 
     </div>
@@ -467,7 +536,7 @@
 
   <footer>
     <span>© 2025 Mathys Robert</span>
-    <span>Projet — <a href="#">Agent IA WhatsApp</a></span>
+    <span>Projet — <a href="#">Agent IA WhatsApp · Awaks</a></span>
   </footer>
 
   <script>
@@ -477,7 +546,7 @@
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('.block, .stat-item, .sidebar-card').forEach(el => observer.observe(el));
+    document.querySelectorAll('.block, .stat-item, .sidebar-card, .step').forEach(el => observer.observe(el));
   </script>
 
 </body>
